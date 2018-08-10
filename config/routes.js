@@ -39,6 +39,25 @@ function register(req, res) {
 
 function login(req, res) {
   // implement user login
+  const credentials = req.body;
+
+  db("users")
+    .where({ username: credentials.username })
+    .first()
+    .then(function(user) {
+      if (user && bcrypt.compareSync(credentials.password, user.password)) {
+        // generate the token
+        const token = generateToken(user);
+
+        // attaches token to the response
+        res.send(token);
+      } else {
+        return res.status(401).json({ message: "You shall not pass!" });
+      }
+    })
+    .catch(function(error) {
+      res.status(500).json({ error });
+    });
 }
 
 function getJokes(req, res) {
