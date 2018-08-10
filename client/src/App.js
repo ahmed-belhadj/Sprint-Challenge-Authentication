@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter, Redirect } from "react-router-dom";
+import { Button } from "reactstrap";
 
 import SignUp from "./components/SignUp/SignUp";
 import SignIn from "./components/SignIn/SignIn";
@@ -22,7 +23,7 @@ class App extends Component {
         </header>
         <div>
           {localStorage.getItem("jwt") && (
-            <button onClick={this.handleSignOut}>Sign Out</button>
+            <Button onClick={this.handleSignOut}>Sign Out</Button>
           )}
         </div>
 

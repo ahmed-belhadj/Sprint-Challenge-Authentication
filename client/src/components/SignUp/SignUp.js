@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
 import axios from "axios";
+
+import "./SignUp.css";
 
 class SignUp extends Component {
   state = {
@@ -26,31 +30,37 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="SignUp">
+      <div>
         <h1>Sign Up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="username" />
-            <input
+        <Form inline className="SignUp" onSubmit={this.handleSubmit}>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="username" className="mr-sm-2">
+              Username
+            </Label>
+            <Input
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
               type="text"
+              placeholder="thomas"
             />
-          </div>
-          <div>
-            <label htmlFor="password" />
-            <input
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="password" className="mr-sm-2">
+              Password
+            </Label>
+            <Input
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
-              type="text"
+              type="password"
+              placeholder="knows"
             />
-          </div>
-          <div>
-            <button type="submit">Sign Up</button>
-          </div>
-        </form>
+          </FormGroup>
+          <FormGroup>
+            <Button type="submit">Sign Up</Button>
+          </FormGroup>
+        </Form>
       </div>
     );
   }

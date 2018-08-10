@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Card, CardTitle, CardText, CardFooter, CardColumns } from "reactstrap";
+
 import axios from "axios";
 
 class Jokes extends Component {
@@ -19,13 +21,15 @@ class Jokes extends Component {
     return (
       <div className="Jokes">
         <h1>Jokes</h1>
-        <ul>
+        <CardColumns>
           {this.state.jokes.map(joke => (
-            <li key={joke.id}>
-              {joke.setup} {joke.punchline}
-            </li>
+            <Card body key={joke.id}>
+              <CardTitle>{joke.setup}</CardTitle>
+              <CardText>{joke.punchline}</CardText>
+              <CardFooter>{joke.type}</CardFooter>
+            </Card>
           ))}
-        </ul>
+        </CardColumns>
       </div>
     );
   }
